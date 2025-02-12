@@ -13,9 +13,10 @@ public class Main {
     public static void main(String[] args) {
         Screen screen = new Screen();
 
-        floors.add(new Floor(30,600, 50,100));
-        floors.add(new Floor(170,580, 50,80));
-        floors.add(new Floor(300,620, 50,120));
+        floors.add(new Floor(50,600, 170,380));
+        floors.add(new Floor(280,580, 130,380));
+        floors.add(new Floor(470,620, 150,380));
+        floors.add(new Floor(50, 450, 100, 30));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);
