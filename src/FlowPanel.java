@@ -37,10 +37,17 @@ public class FlowPanel extends JPanel implements Runnable {
             g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
 
             //Отображение rectangle персонажа
-            g.drawRect(Main.character.getHad().x, Main.character.getHad().y,
-                    Main.character.getHad().width, Main.character.getHad().height);
+            g.drawRect(Main.character.getLeftHand().x, Main.character.getLeftHand().y,
+                    Main.character.getLeftHand().width, Main.character.getLeftHand().height);
+
+            g.drawRect(Main.character.getHead().x, Main.character.getHead().y,
+                    Main.character.getHead().width, Main.character.getHead().height);
+
             g.drawRect(Main.character.getLegs().x, Main.character.getLegs().y,
                     Main.character.getLegs().width, Main.character.getLegs().height);
+
+            g.drawRect(Main.character.getRightHand().x, Main.character.getRightHand().y,
+                    Main.character.getRightHand().width, Main.character.getRightHand().height);
 
             //Отображение rectangle для платформ
             for (Floor block : Main.floors) {

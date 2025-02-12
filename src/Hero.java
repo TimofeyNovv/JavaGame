@@ -2,34 +2,56 @@ import java.awt.*;
 
 public class Hero {
     private short coordX = 100;
+
     private int coordY = 580;
 
     private boolean isjumped = true;
+
     private short speedX, speedY = Const.speedy;
 
     private Direction direction = Direction.NON;
 
-    private Rectangle legs = new Rectangle(coordX, coordY + Const.CHARACTER_HEIGHT - 15,
-            Const.CHARACTER_WIDTH, 15);
+    private Rectangle legs = new Rectangle(coordX + Const.CHARACTER_HAND_WIDTH, coordY + Const.CHARACTER_HEIGHT - 15,
+            Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, 15);
 
-    private Rectangle had = new Rectangle(coordX, coordY, Const.CHARACTER_WIDTH, 15);
+    private Rectangle head = new Rectangle(coordX + Const.CHARACTER_HAND_WIDTH, coordY,
+            Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
+
+    private Rectangle leftHand = new Rectangle(coordX, coordY, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+
+    private Rectangle rightHand = new Rectangle(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY,
+            Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
 
     public void update() {
         coordX += speedX;
         coordY += speedY;
-        legs.setBounds(coordX, coordY + Const.CHARACTER_HEIGHT - 15, Const.CHARACTER_WIDTH, 15);
-        had.setBounds(coordX, coordY, Const.CHARACTER_WIDTH, 15);
+
+        legs.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY + Const.CHARACTER_HEIGHT - 15,
+                Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
+
+        head.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY,
+                Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
+
+        leftHand.setBounds(coordX, coordY, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+
+        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY,
+                Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+
         collision();
         // coordX -= speedX;
     }
 
-    public void collision(){
+    public void collision() {
         for (Floor block : Main.floors) {
-            if (legs.intersects(block)){
+            if (legs.intersects(block)) {
                 coordY = block.y - Const.CHARACTER_HEIGHT;
                 isjumped = false;
-            } else if (had.intersects(block)) {
+            } else if (head.intersects(block)) {
                 coordY = block.y + block.height;
+            } else if (leftHand.intersects(block)) {
+                coordX += 12;
+            } else if (rightHand.intersects(block)) {
+                coordX -= 12;
             }
         }
 
@@ -44,8 +66,9 @@ public class Hero {
         direction = Direction.LEFT;
         speedX = -Const.speedx;
     }
-    public void jump(){
-        if(!isjumped){
+
+    public void jump() {
+        if (!isjumped) {
             coordY -= Const.JUMP_SPEED;
             isjumped = true;
         }
@@ -73,7 +96,15 @@ public class Hero {
         return legs;
     }
 
-    public Rectangle getHad() {
-        return had;
+    public Rectangle getHead() {
+        return head;
+    }
+
+    public Rectangle getLeftHand() {
+        return leftHand;
+    }
+
+    public Rectangle getRightHand() {
+        return rightHand;
     }
 }
