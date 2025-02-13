@@ -62,9 +62,6 @@ public class Main {
                     case KeyEvent.VK_A -> {
                         character.stop();
                     }
-                    case KeyEvent.VK_SPACE -> {
-                        character.stop();
-                    }
                 }
                 super.keyReleased(e);
             }

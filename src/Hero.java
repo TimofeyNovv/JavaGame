@@ -38,7 +38,6 @@ public class Hero {
                 Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
 
         collision();
-        // coordX -= speedX;
     }
 
     public void collision() {
