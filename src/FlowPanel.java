@@ -8,7 +8,8 @@ import java.io.IOException;
 public class FlowPanel extends JPanel implements Runnable {
 
     private BufferedImage[] imagesHero = new BufferedImage[2];
-    private Animation animHero;
+    private Animation animHeroRight;
+    private Animation animHeroLeft;
     private BufferedImage imageH;
 
     public FlowPanel() {
@@ -19,15 +20,25 @@ public class FlowPanel extends JPanel implements Runnable {
             throw new RuntimeException(e);
         }
 
-        animHero = new Animation(false);
+        animHeroRight = new Animation(false);
+        animHeroLeft = new Animation(false);
         for (byte i = 0; i < imagesHero.length; i++) {
             try {
                 imagesHero[i] = ImageIO.read(new File("images/heroright/" + i + ".png"));
-                animHero.addFrame(imagesHero[i], 50);
+                animHeroRight.addFrame(imagesHero[i], 50);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+        for (byte i = 0; i < imagesHero.length; i++) {
+            try {
+                imagesHero[i] = ImageIO.read(new File("images/heroleft/" + i + ".png"));
+                animHeroLeft.addFrame(imagesHero[i], 50);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     @Override
@@ -64,10 +75,13 @@ public class FlowPanel extends JPanel implements Runnable {
     public void run() {
         while (true) {
             try {
-                if (Main.character.getDirection() == Direction.RIGHT || Main.character.getDirection() == Direction.LEFT) {
-                    imageH = animHero.getImage();
+                if (Main.character.getDirection() == Direction.RIGHT) {
+                    imageH = animHeroRight.getImage();
+                } else if (Main.character.getDirection() == Direction.LEFT){
+                    imageH = animHeroLeft.getImage();
                 }
-                animHero.update(10);
+                animHeroRight.update(10);
+                animHeroLeft.update(10);
                 update();
                 repaint();
                 Thread.sleep(50);
