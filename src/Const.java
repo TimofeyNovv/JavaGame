@@ -1,7 +1,7 @@
 public class Const {
-    static final short CHARACTER_WIDTH = 136;
-    static final short CHARACTER_HEIGHT = 96;
-    static final short JUMP_SPEED = 70;
+    static final short CHARACTER_WIDTH = 180;
+    static final short CHARACTER_HEIGHT = 295;
+    //static final short JUMP_SPEED = 270;
     static final short CHARACTER_HAND_WIDTH = 30;
 
     static final byte speedx = 12;

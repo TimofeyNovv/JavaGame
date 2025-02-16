@@ -1,8 +1,7 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class Main {
@@ -11,17 +10,22 @@ public class Main {
     static ArrayList<Floor> floors = new ArrayList<>();
 
     public static void main(String[] args) {
+
         Screen screen = new Screen();
 
-        floors.add(new Floor(70,530, 170,380));
-        floors.add(new Floor(330,580, 130,380));
-        floors.add(new Floor(540,620, 150,380));
-        floors.add(new Floor(0, 480, 100, 30));
-        floors.add(new Floor(0,330,100,30));
+        floors.add(new Floor(0,1058,190,22));
+        floors.add(new Floor(205,992,190,22));
+        floors.add(new Floor(418,940,190,22));
+        floors.add(new Floor(628,833, 190,22));
+        floors.add(new Floor(840,650, 190,22));
+        floors.add(new Floor(1059,650, 190,22));
+        floors.add(new Floor(1279,402, 190,22));
+        floors.add(new Floor(1498,344,190,22));
+        floors.add(new Floor(1730,344,190,22));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);
-        panel.setBackground(Color.darkGray);
+        //panel.setBackground(panel.getFon2image());
 
         Thread thread = new Thread(panel);
         thread.start();

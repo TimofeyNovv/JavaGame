@@ -1,9 +1,11 @@
 import java.awt.*;
 
 public class Hero {
-    private short coordX = 100;
+    private short coordX = 628;
 
-    private int coordY = 580;
+    private int coordY = 400;
+
+    private int JUMP_SPEED = 270;
 
     private boolean isjumped = true;
 
@@ -17,10 +19,10 @@ public class Hero {
     private Rectangle head = new Rectangle(coordX + Const.CHARACTER_HAND_WIDTH, coordY,
             Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
 
-    private Rectangle leftHand = new Rectangle(coordX, coordY, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+    private Rectangle leftHand = new Rectangle(coordX, coordY + legs.height, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
-    private Rectangle rightHand = new Rectangle(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY,
-            Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+    private Rectangle rightHand = new Rectangle(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY  + legs.height,
+            Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT  - legs.height * 2);
 
     public void update() {
         coordX += speedX;
@@ -32,10 +34,10 @@ public class Hero {
         head.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY,
                 Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
 
-        leftHand.setBounds(coordX, coordY, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+        leftHand.setBounds(coordX, coordY + legs.height, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
-        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY,
-                Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT);
+        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY  + legs.height,
+                Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT  - legs.height * 2);
 
         collision();
     }
@@ -68,8 +70,18 @@ public class Hero {
 
     public void jump() {
         if (!isjumped) {
-            coordY -= Const.JUMP_SPEED;
+            if (Main.character.coordX > 0 && Main.character.coordX < 400 ){
+                JUMP_SPEED = 100;
+            } else if (Main.character.coordX > 401 && Main.character.coordX < 580){
+                JUMP_SPEED = 150;
+            } else if (Main.character.coordX > 600 && Main.character.coordX < 700aa){
+                JUMP_SPEED = 250;
+            } else if (Main.character.coordX > 1030 && Main.character.coordX < 1280){
+                JUMP_SPEED = 50;
+            }
+            coordY -= JUMP_SPEED;
             isjumped = true;
+
         }
 
     }

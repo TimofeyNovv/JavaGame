@@ -7,10 +7,12 @@ import java.io.IOException;
 
 public class FlowPanel extends JPanel implements Runnable {
 
-    private BufferedImage[] imagesHero = new BufferedImage[2];
+    private BufferedImage[] imagesHero = new BufferedImage[1];
     private Animation animHeroRight;
     private Animation animHeroLeft;
     private BufferedImage imageH;
+
+    private Image fon2image = new ImageIcon("images/backgrounds/fon2.png").getImage();
 
     public FlowPanel() {
 
@@ -45,6 +47,8 @@ public class FlowPanel extends JPanel implements Runnable {
     public void paint(Graphics g) {
         super.paint(g);
         if (imageH != null) {
+            g.drawImage(fon2image, 0, 0, null);
+
             g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
 
             //Отображение rectangle персонажа
@@ -77,7 +81,7 @@ public class FlowPanel extends JPanel implements Runnable {
             try {
                 if (Main.character.getDirection() == Direction.RIGHT) {
                     imageH = animHeroRight.getImage();
-                } else if (Main.character.getDirection() == Direction.LEFT){
+                } else if (Main.character.getDirection() == Direction.LEFT) {
                     imageH = animHeroLeft.getImage();
                 }
                 animHeroRight.update(10);
@@ -89,5 +93,9 @@ public class FlowPanel extends JPanel implements Runnable {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public Image getFon2image() {
+        return fon2image;
     }
 }
