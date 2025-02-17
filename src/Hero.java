@@ -74,10 +74,14 @@ public class Hero {
                 JUMP_SPEED = 100;
             } else if (Main.character.coordX > 401 && Main.character.coordX < 580){
                 JUMP_SPEED = 150;
-            } else if (Main.character.coordX > 600 && Main.character.coordX < 700aa){
+            } else if (Main.character.coordX > 600 && Main.character.coordX < 700){
                 JUMP_SPEED = 250;
-            } else if (Main.character.coordX > 1030 && Main.character.coordX < 1280){
+            } else if (Main.character.coordX > 701 && Main.character.coordX < 1000){
                 JUMP_SPEED = 50;
+            } else if (Main.character.coordX > 1001 && Main.character.coordX < 1150){
+                JUMP_SPEED = 260;
+            } else if (Main.character.coordX > 1051 && Main.character.coordX < 2000){
+                JUMP_SPEED = 70;
             }
             coordY -= JUMP_SPEED;
             isjumped = true;
