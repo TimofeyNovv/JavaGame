@@ -1,9 +1,9 @@
 import java.awt.*;
 
 public class Hero {
-    private short coordX = 628;
+    private short coordX = 1800;
 
-    private int coordY = 400;
+    private int coordY = 0;
 
     private int JUMP_SPEED = 270;
 
@@ -49,11 +49,11 @@ public class Hero {
                 isjumped = false;
             } else if (head.intersects(block)) {
                 coordY = block.y + block.height;
-            } else if (leftHand.intersects(block)) {
+                } /*else if (leftHand.intersects(block)) {
                 coordX += 12;
             } else if (rightHand.intersects(block)) {
                 coordX -= 12;
-            }
+            }*/
         }
 
     }
@@ -121,5 +121,13 @@ public class Hero {
 
     public Rectangle getRightHand() {
         return rightHand;
+    }
+
+    public void setCoordX(short coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
     }
 }

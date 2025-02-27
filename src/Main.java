@@ -9,23 +9,24 @@ public class Main {
 
     static ArrayList<Floor> floors = new ArrayList<>();
 
+    static Image fon2image = new ImageIcon("images/backgrounds/fon2.png").getImage();
+
     public static void main(String[] args) {
 
         Screen screen = new Screen();
 
-        floors.add(new Floor(0,1058,190,22));
-        floors.add(new Floor(205,992,190,22));
-        floors.add(new Floor(418,940,190,22));
-        floors.add(new Floor(628,833, 190,22));
-        floors.add(new Floor(840,650, 190,22));
-        floors.add(new Floor(1059,650, 190,22));
-        floors.add(new Floor(1279,402, 190,22));
-        floors.add(new Floor(1498,344,190,22));
-        floors.add(new Floor(1730,344,190,22));
+        floors.add(new Floor(0, 1058, 190, 22));
+        floors.add(new Floor(205, 992, 190, 22));
+        floors.add(new Floor(418, 940, 190, 22));
+        floors.add(new Floor(628, 833, 190, 22));
+        floors.add(new Floor(840, 650, 190, 22));
+        floors.add(new Floor(1059, 650, 190, 22));
+        floors.add(new Floor(1279, 402, 190, 22));
+        floors.add(new Floor(1498, 344, 190, 22));
+        floors.add(new Floor(1730, 344, 190, 22));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);
-        //panel.setBackground(panel.getFon2image());
 
         Thread thread = new Thread(panel);
         thread.start();
@@ -46,11 +47,20 @@ public class Main {
                     case KeyEvent.VK_SPACE -> {
                         character.jump();
                     }
-                    case KeyEvent.VK_D -> {
-                        character.moveRight();
-                    }
                     case KeyEvent.VK_A -> {
                         character.moveLeft();
+                    }
+                    case KeyEvent.VK_D -> {
+                        if (character.getCoordX() > 1900 && character.getCoordY() < 650){
+                            System.out.println("skd;akslk;a");
+                            character.setCoordX((short) 1);
+                            character.setCoordY(150);
+                            floors.clear();
+                            fon2image = new ImageIcon("images/backgrounds/fon3.png").getImage();
+
+                        } else {
+                            character.moveRight();
+                        }
                     }
 
 
@@ -60,7 +70,7 @@ public class Main {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                switch (e.getKeyCode()){
+                switch (e.getKeyCode()) {
                     case KeyEvent.VK_D -> {
                         character.stop();
                     }
@@ -73,5 +83,9 @@ public class Main {
         });
 
         screen.setVisible(true);
+    }
+
+    public Image getFonimage() {
+        return fon2image;
     }
 }

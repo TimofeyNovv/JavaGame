@@ -12,7 +12,8 @@ public class FlowPanel extends JPanel implements Runnable {
     private Animation animHeroLeft;
     private BufferedImage imageH;
 
-    private Image fon2image = new ImageIcon("images/backgrounds/fon2.png").getImage();
+    private Image fonimage;
+    //fonimage =
 
     public FlowPanel() {
 
@@ -47,7 +48,7 @@ public class FlowPanel extends JPanel implements Runnable {
     public void paint(Graphics g) {
         super.paint(g);
         if (imageH != null) {
-            g.drawImage(fon2image, 0, 0, null);
+            g.drawImage(Main.fon2image, 0, 0, null);
 
             g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
 
@@ -93,9 +94,5 @@ public class FlowPanel extends JPanel implements Runnable {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    public Image getFon2image() {
-        return fon2image;
     }
 }
