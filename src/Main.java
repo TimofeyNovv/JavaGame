@@ -7,9 +7,10 @@ import java.util.ArrayList;
 public class Main {
     static Hero character = new Hero();
 
+    static int numberfon = 2;
     static ArrayList<Floor> floors = new ArrayList<>();
 
-    static Image fon2image = new ImageIcon("images/backgrounds/fon2.png").getImage();
+    static Image fonImage = new ImageIcon("images/backgrounds/fon2.png").getImage();
 
     public static void main(String[] args) {
 
@@ -51,13 +52,13 @@ public class Main {
                         character.moveLeft();
                     }
                     case KeyEvent.VK_D -> {
-                        if (character.getCoordX() > 1900 && character.getCoordY() < 650){
+                        if (character.getCoordX() > 1900 && character.getCoordY() < 650 && numberfon == 2){
                             System.out.println("skd;akslk;a");
                             character.setCoordX((short) 1);
                             character.setCoordY(150);
                             floors.clear();
-                            fon2image = new ImageIcon("images/backgrounds/fon3.png").getImage();
-
+                            fonImage = new ImageIcon("images/backgrounds/fon3.png").getImage();
+                            numberfon = 3;
                         } else {
                             character.moveRight();
                         }
@@ -86,6 +87,6 @@ public class Main {
     }
 
     public Image getFonimage() {
-        return fon2image;
+        return fonImage;
     }
 }
