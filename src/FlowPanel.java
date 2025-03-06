@@ -48,7 +48,7 @@ public class FlowPanel extends JPanel implements Runnable {
     public void paint(Graphics g) {
         super.paint(g);
         if (imageH != null) {
-            g.drawImage(Main.fon2image, 0, 0, null);
+            g.drawImage(Main.fonImage, 0, 0, null);
 
             g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
 
@@ -69,11 +69,17 @@ public class FlowPanel extends JPanel implements Runnable {
             for (Floor block : Main.floors) {
                 g.drawRect(block.x, block.y, block.width, block.height);
             }
+
+            for (Bonus bonusic : Main.bonuses){
+                g.drawImage(bonusic.getImageBonus(), bonusic.getX(), bonusic.getY(), null);
+                g.drawRect(bonusic.getX(), bonusic.getY(), 50,50);
+            }
         }
     }
 
     public void update() {
         Main.character.update();
+
     }
 
     @Override

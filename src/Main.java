@@ -10,6 +10,8 @@ public class Main {
     static int numberfon = 2;
     static ArrayList<Floor> floors = new ArrayList<>();
 
+    static  ArrayList<Bonus> bonuses = new ArrayList<>();
+
     static Image fonImage = new ImageIcon("images/backgrounds/fon2.png").getImage();
 
     public static void main(String[] args) {
@@ -25,6 +27,9 @@ public class Main {
         floors.add(new Floor(1279, 402, 190, 22));
         floors.add(new Floor(1498, 344, 190, 22));
         floors.add(new Floor(1730, 344, 190, 22));
+
+        bonuses.add(new Bonus(100,100, new ImageIcon("images/icons/photo_face.jpg").getImage()));
+        bonuses.add(new Bonus(200,800, new ImageIcon("images/icons/photo_pen.jpg").getImage()));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);

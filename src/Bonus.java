@@ -1,28 +1,20 @@
 import java.awt.*;
 
-public class Bonuses {
+public class Bonus {
     private int x, y;
     private Rectangle body = new Rectangle();
     private boolean isTake = false;
 
-    private Image imageIcon;
+    private Image imageBonus;
 
-    public Bonuses(int x, int y, Image imageIcon) {
+    public Bonus(int x, int y, Image imageIcon) {
         this.x = x;
         this.y = y;
-        this.imageIcon = imageIcon;
+        this.imageBonus = imageIcon;
         body.setRect(x, y, 50, 50);
+
+
     }
-
-    public void collision(){
-        if (body.intersects(Main.character.getLeftHand()) || body.intersects(Main.character.getRightHand())
-        || body.intersects(Main.character.getLegs()) || body.intersects(Main.character.getHead())){
-            isTake = true;
-
-        }
-    }
-
-
     public int getX() {
         return x;
     }
@@ -39,7 +31,7 @@ public class Bonuses {
         return body;
     }
 
-    public Image getImageIcon() {
-        return imageIcon;
+    public Image getImageBonus() {
+        return imageBonus;
     }
 }

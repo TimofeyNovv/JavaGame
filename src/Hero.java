@@ -21,8 +21,8 @@ public class Hero {
 
     private Rectangle leftHand = new Rectangle(coordX, coordY + legs.height, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
-    private Rectangle rightHand = new Rectangle(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY  + legs.height,
-            Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT  - legs.height * 2);
+    private Rectangle rightHand = new Rectangle(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY + legs.height,
+            Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
     public void update() {
         coordX += speedX;
@@ -36,8 +36,8 @@ public class Hero {
 
         leftHand.setBounds(coordX, coordY + legs.height, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
-        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY  + legs.height,
-                Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT  - legs.height * 2);
+        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY + legs.height,
+                Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
         collision();
     }
@@ -49,11 +49,17 @@ public class Hero {
                 isjumped = false;
             } else if (head.intersects(block)) {
                 coordY = block.y + block.height;
-                } /*else if (leftHand.intersects(block)) {
+            } /*else if (leftHand.intersects(block)) {
                 coordX += 12;
             } else if (rightHand.intersects(block)) {
                 coordX -= 12;
             }*/
+        }
+        for (Bonus bonusic : Main.bonuses) {
+            if (legs.intersects(bonusic.getBody()) || head.intersects(bonusic.getBody())
+                    || leftHand.intersects(bonusic.getBody()) || rightHand.intersects(bonusic.getBody())) {
+                System.out.println("Collision");
+            }
         }
 
     }
@@ -70,17 +76,17 @@ public class Hero {
 
     public void jump() {
         if (!isjumped) {
-            if (Main.character.coordX > 0 && Main.character.coordX < 400 ){
+            if (Main.character.coordX > 0 && Main.character.coordX < 400) {
                 JUMP_SPEED = 100;
-            } else if (Main.character.coordX > 401 && Main.character.coordX < 580){
+            } else if (Main.character.coordX > 401 && Main.character.coordX < 580) {
                 JUMP_SPEED = 150;
-            } else if (Main.character.coordX > 600 && Main.character.coordX < 700){
+            } else if (Main.character.coordX > 600 && Main.character.coordX < 700) {
                 JUMP_SPEED = 250;
-            } else if (Main.character.coordX > 701 && Main.character.coordX < 1000){
+            } else if (Main.character.coordX > 701 && Main.character.coordX < 1000) {
                 JUMP_SPEED = 50;
-            } else if (Main.character.coordX > 1001 && Main.character.coordX < 1150){
+            } else if (Main.character.coordX > 1001 && Main.character.coordX < 1150) {
                 JUMP_SPEED = 260;
-            } else if (Main.character.coordX > 1051 && Main.character.coordX < 2000){
+            } else if (Main.character.coordX > 1051 && Main.character.coordX < 2000) {
                 JUMP_SPEED = 70;
             }
             coordY -= JUMP_SPEED;
