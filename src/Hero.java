@@ -58,7 +58,7 @@ public class Hero {
         for (Bonus bonusic : Main.bonuses) {
             if (legs.intersects(bonusic.getBody()) || head.intersects(bonusic.getBody())
                     || leftHand.intersects(bonusic.getBody()) || rightHand.intersects(bonusic.getBody())) {
-                System.out.println("Collision");
+                bonusic.setX(3000);
             }
         }
 
