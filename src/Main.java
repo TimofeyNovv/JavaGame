@@ -7,29 +7,22 @@ import java.util.ArrayList;
 public class Main {
     static Hero character = new Hero();
 
-    static int numberfon = 2;
+    static Floor floor = new Floor(0, 0, 0, 0);
+
+    static int numberfon = 1;
+
     static ArrayList<Floor> floors = new ArrayList<>();
 
-    static  ArrayList<Bonus> bonuses = new ArrayList<>();
-
-    static Image fonImage = new ImageIcon("images/backgrounds/fon2.png").getImage();
+    static ArrayList<Bonus> bonuses = new ArrayList<>();
 
     public static void main(String[] args) {
-
+        floors = floor.coordinationForFloor(numberfon);
         Screen screen = new Screen();
+        System.out.println(numberfon);
+        System.out.println(numberfon);
 
-        floors.add(new Floor(0, 1058, 190, 22));
-        floors.add(new Floor(205, 992, 190, 22));
-        floors.add(new Floor(418, 940, 190, 22));
-        floors.add(new Floor(628, 833, 190, 22));
-        floors.add(new Floor(840, 650, 190, 22));
-        floors.add(new Floor(1059, 650, 190, 22));
-        floors.add(new Floor(1279, 402, 190, 22));
-        floors.add(new Floor(1498, 344, 190, 22));
-        floors.add(new Floor(1730, 344, 190, 22));
-
-        bonuses.add(new Bonus(100,100, new ImageIcon("images/icons/photo_face.jpg").getImage()));
-        bonuses.add(new Bonus(200,800, new ImageIcon("images/icons/photo_pen.jpg").getImage()));
+        bonuses.add(new Bonus(100, 100, new ImageIcon("images/icons/photo_face.png").getImage()));
+        bonuses.add(new Bonus(200, 800, new ImageIcon("images/icons/photo_pen.png").getImage()));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);
@@ -51,19 +44,18 @@ public class Main {
                     }
 
                     case KeyEvent.VK_SPACE -> {
-                        character.jump();
+                        character.jump(character.strengthJump(Main.character.getCoordX(), numberfon));
                     }
                     case KeyEvent.VK_A -> {
                         character.moveLeft();
                     }
                     case KeyEvent.VK_D -> {
-                        if (character.getCoordX() > 1900 && character.getCoordY() < 650 && numberfon == 2){
-                            System.out.println("skd;akslk;a");
+                        if (character.getCoordX() > 1900) {
                             character.setCoordX((short) 1);
                             character.setCoordY(150);
                             floors.clear();
-                            fonImage = new ImageIcon("images/backgrounds/fon3.png").getImage();
-                            numberfon = 3;
+                            numberfon++;
+                            floors = floor.coordinationForFloor(numberfon);
                         } else {
                             character.moveRight();
                         }
@@ -91,7 +83,7 @@ public class Main {
         screen.setVisible(true);
     }
 
-    public Image getFonimage() {
-        return fonImage;
+    public static int getNumberfon() {
+        return numberfon;
     }
 }

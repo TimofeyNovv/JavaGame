@@ -12,10 +12,9 @@ public class FlowPanel extends JPanel implements Runnable {
     private Animation animHeroLeft;
     private BufferedImage imageH;
 
-    private Image fonimage;
-    //fonimage =
 
     public FlowPanel() {
+
 
         try {
             imageH = ImageIO.read(new File("images/heroright/0.png"));
@@ -46,40 +45,41 @@ public class FlowPanel extends JPanel implements Runnable {
 
     @Override
     public void paint(Graphics g) {
+        Image backgroundImage = new ImageIcon("images/backgrounds/fon" + Main.getNumberfon() + ".png").getImage();
         super.paint(g);
         if (imageH != null) {
-            g.drawImage(Main.fonImage, 0, 0, null);
 
-            g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
+                g.drawImage(backgroundImage, 0, 0, null);
 
-            //Отображение rectangle персонажа
-            g.drawRect(Main.character.getLeftHand().x, Main.character.getLeftHand().y,
-                    Main.character.getLeftHand().width, Main.character.getLeftHand().height);
+                g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
 
-            g.drawRect(Main.character.getHead().x, Main.character.getHead().y,
-                    Main.character.getHead().width, Main.character.getHead().height);
+                //Отображение rectangle персонажа
+                g.drawRect(Main.character.getLeftHand().x, Main.character.getLeftHand().y,
+                        Main.character.getLeftHand().width, Main.character.getLeftHand().height);
 
-            g.drawRect(Main.character.getLegs().x, Main.character.getLegs().y,
-                    Main.character.getLegs().width, Main.character.getLegs().height);
+                g.drawRect(Main.character.getHead().x, Main.character.getHead().y,
+                        Main.character.getHead().width, Main.character.getHead().height);
 
-            g.drawRect(Main.character.getRightHand().x, Main.character.getRightHand().y,
-                    Main.character.getRightHand().width, Main.character.getRightHand().height);
+                g.drawRect(Main.character.getLegs().x, Main.character.getLegs().y,
+                        Main.character.getLegs().width, Main.character.getLegs().height);
 
-            //Отображение rectangle для платформ
-            for (Floor block : Main.floors) {
-                g.drawRect(block.x, block.y, block.width, block.height);
-            }
+                g.drawRect(Main.character.getRightHand().x, Main.character.getRightHand().y,
+                        Main.character.getRightHand().width, Main.character.getRightHand().height);
 
-            for (Bonus bonusic : Main.bonuses){
-                g.drawImage(bonusic.getImageBonus(), bonusic.getX(), bonusic.getY(), null);
-                g.drawRect(bonusic.getX(), bonusic.getY(), 50,50);
-            }
+                //Отображение rectangle для платформ
+                for (Floor block : Main.floors) {
+                    g.drawRect(block.x, block.y, block.width, block.height);
+                }
+
+                for (Bonus bonusic : Main.bonuses) {
+                    g.drawImage(bonusic.getImageBonus(), bonusic.getX(), bonusic.getY(), null);
+                    g.drawRect(bonusic.getX(), bonusic.getY(), bonusic.getWidth(), bonusic.getHeight());
+                }
         }
     }
 
     public void update() {
         Main.character.update();
-
     }
 
     @Override
@@ -95,10 +95,12 @@ public class FlowPanel extends JPanel implements Runnable {
                 animHeroLeft.update(10);
                 update();
                 repaint();
-                Thread.sleep(50);
+                Thread.sleep(40);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 }
+
+

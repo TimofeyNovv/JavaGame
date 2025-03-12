@@ -5,8 +5,6 @@ public class Hero {
 
     private int coordY = 0;
 
-    private int JUMP_SPEED = 270;
-
     private boolean isjumped = true;
 
     private short speedX, speedY = Const.speedy;
@@ -23,6 +21,8 @@ public class Hero {
 
     private Rectangle rightHand = new Rectangle(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY + legs.height,
             Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
+
+
 
     public void update() {
         coordX += speedX;
@@ -74,22 +74,36 @@ public class Hero {
         speedX = -Const.speedx;
     }
 
-    public void jump() {
-        if (!isjumped) {
-            if (Main.character.coordX > 0 && Main.character.coordX < 400) {
-                JUMP_SPEED = 100;
-            } else if (Main.character.coordX > 401 && Main.character.coordX < 580) {
-                JUMP_SPEED = 150;
-            } else if (Main.character.coordX > 600 && Main.character.coordX < 700) {
-                JUMP_SPEED = 250;
-            } else if (Main.character.coordX > 701 && Main.character.coordX < 1000) {
-                JUMP_SPEED = 50;
-            } else if (Main.character.coordX > 1001 && Main.character.coordX < 1150) {
-                JUMP_SPEED = 260;
-            } else if (Main.character.coordX > 1051 && Main.character.coordX < 2000) {
-                JUMP_SPEED = 70;
+    public int strengthJump(int coordX, int numberFon){
+        int jumpSpeed = 0;
+        switch (numberFon){
+            case 1 -> {
+                jumpSpeed = 100;
             }
-            coordY -= JUMP_SPEED;
+            case 2 -> {
+                if (coordX > 0 && coordX < 400) {
+                    jumpSpeed = 100;
+                } else if (coordX > 401 && coordX < 580) {
+                    jumpSpeed = 150;
+                } else if (coordX > 600 && coordX < 700) {
+                    jumpSpeed = 250;
+                } else if (coordX > 701 && coordX < 1000) {
+                    jumpSpeed = 50;
+                } else if (coordX > 1001 && coordX < 1150) {
+                    jumpSpeed = 260;
+                } else if (coordX > 1051 && coordX < 2000) {
+                    jumpSpeed = 70;
+                }
+            }
+            case 3 -> {
+                jumpSpeed = 150;
+            }
+        }
+        return jumpSpeed;
+    }
+    public void jump(int strengthJump) {
+        if (!isjumped) {
+            coordY -= strengthJump;
             isjumped = true;
 
         }

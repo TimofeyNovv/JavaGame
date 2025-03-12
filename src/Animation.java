@@ -33,7 +33,7 @@ public class Animation {
             animTime += elapsedTime;
 
 
-            if (!(loop && currentFrame == frames.size()-1)){
+            if (!(loop && currentFrame == frames.size() - 1)) {
                 if (animTime >= totalDuration) {
                     animTime = animTime % totalDuration;
                     currentFrame = 0;
@@ -47,7 +47,8 @@ public class Animation {
 
             }
 
-        }}
+        }
+    }
 
     public synchronized BufferedImage getImage() {
         if (frames.size() == 0) {

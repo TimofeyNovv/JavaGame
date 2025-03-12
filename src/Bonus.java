@@ -2,8 +2,12 @@ import java.awt.*;
 
 public class Bonus {
     private int x, y;
+
     private Rectangle body = new Rectangle();
+
     private boolean isTake = false;
+
+    private int width = 100, height = 100;
 
     private Image imageBonus;
 
@@ -11,7 +15,7 @@ public class Bonus {
         this.x = x;
         this.y = y;
         this.imageBonus = imageIcon;
-        body.setRect(x, y, 50, 50);
+        body.setRect(x, y, width, height);
     }
     public int getX() {
         return x;
@@ -37,7 +41,11 @@ public class Bonus {
         this.x = x;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
