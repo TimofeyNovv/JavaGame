@@ -1,5 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ public class Main {
 
     static ArrayList<Floor> floors = new ArrayList<>();
 
-    static ArrayList<Bonus> bonuses = new ArrayList<>();
+    static ArrayList<BonusSyget> bonusSygets = new ArrayList<>();
 
     public static void main(String[] args) {
         floors = floor.coordinationForFloor(numberfon);
@@ -21,8 +19,8 @@ public class Main {
         System.out.println(numberfon);
         System.out.println(numberfon);
 
-        bonuses.add(new Bonus(100, 100, new ImageIcon("images/icons/photo_face.png").getImage()));
-        bonuses.add(new Bonus(200, 800, new ImageIcon("images/icons/photo_pen.png").getImage()));
+        //bonuses.add(new Bonus(100, 100, new ImageIcon("images/icons/photo_face.png").getImage()));
+        // bonuses.add(new Bonus(200, 800, new ImageIcon("images/icons/photo_pen.png").getImage()));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);

@@ -49,32 +49,38 @@ public class FlowPanel extends JPanel implements Runnable {
         super.paint(g);
         if (imageH != null) {
 
-                g.drawImage(backgroundImage, 0, 0, null);
+            g.drawImage(backgroundImage, 0, 0, null);
 
-                g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
+            g.drawImage(imageH, Main.character.getCoordX(), Main.character.getCoordY(), null);
 
-                //Отображение rectangle персонажа
-                g.drawRect(Main.character.getLeftHand().x, Main.character.getLeftHand().y,
-                        Main.character.getLeftHand().width, Main.character.getLeftHand().height);
+            //Отображение rectangle персонажа
+            g.drawRect(Main.character.getLeftHand().x, Main.character.getLeftHand().y,
+                    Main.character.getLeftHand().width, Main.character.getLeftHand().height);
 
-                g.drawRect(Main.character.getHead().x, Main.character.getHead().y,
-                        Main.character.getHead().width, Main.character.getHead().height);
+            g.drawRect(Main.character.getHead().x, Main.character.getHead().y,
+                    Main.character.getHead().width, Main.character.getHead().height);
 
-                g.drawRect(Main.character.getLegs().x, Main.character.getLegs().y,
-                        Main.character.getLegs().width, Main.character.getLegs().height);
+            g.drawRect(Main.character.getLegs().x, Main.character.getLegs().y,
+                    Main.character.getLegs().width, Main.character.getLegs().height);
 
-                g.drawRect(Main.character.getRightHand().x, Main.character.getRightHand().y,
-                        Main.character.getRightHand().width, Main.character.getRightHand().height);
+            g.drawRect(Main.character.getRightHand().x, Main.character.getRightHand().y,
+                    Main.character.getRightHand().width, Main.character.getRightHand().height);
 
-                //Отображение rectangle для платформ
-                for (Floor block : Main.floors) {
-                    g.drawRect(block.x, block.y, block.width, block.height);
-                }
+            //Отображение rectangle для платформ
+            for (Floor block : Main.floors) {
+                g.drawRect(block.x, block.y, block.width, block.height);
+            }
 
-                for (Bonus bonusic : Main.bonuses) {
-                    g.drawImage(bonusic.getImageBonus(), bonusic.getX(), bonusic.getY(), null);
-                    g.drawRect(bonusic.getX(), bonusic.getY(), bonusic.getWidth(), bonusic.getHeight());
-                }
+            for (BonusSyget bonusic : Main.bonusSygets) {
+                g.drawImage(bonusic.getImageBonus(), bonusic.getX(), bonusic.getY(), null);
+                g.drawRect(bonusic.getX(), bonusic.getY(), bonusic.getWidth(), bonusic.getHeight());
+            }
+
+            for (Bonus bonusic : Main.floor.getBonuses()) {
+                g.drawImage(bonusic.getImageBonus(), bonusic.getX(), bonusic.getY(), null);
+                g.drawRect(bonusic.getX(), bonusic.getY(), bonusic.getWidth(), bonusic.getHeight());
+            }
+
         }
     }
 

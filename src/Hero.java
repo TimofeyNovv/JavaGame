@@ -55,7 +55,13 @@ public class Hero {
                 coordX -= 12;
             }*/
         }
-        for (Bonus bonusic : Main.bonuses) {
+        for (BonusSyget bonusic : Main.bonusSygets) {
+            if (legs.intersects(bonusic.getBody()) || head.intersects(bonusic.getBody())
+                    || leftHand.intersects(bonusic.getBody()) || rightHand.intersects(bonusic.getBody())) {
+                bonusic.setX(3000);
+            }
+        }
+        for (Bonus bonusic : Main.floor.getBonuses()) {
             if (legs.intersects(bonusic.getBody()) || head.intersects(bonusic.getBody())
                     || leftHand.intersects(bonusic.getBody()) || rightHand.intersects(bonusic.getBody())) {
                 bonusic.setX(3000);
