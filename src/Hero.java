@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Hero {
-    private short coordX = 1800;
+    private short coordX = 20;
 
     private int coordY = 0;
 
@@ -103,6 +103,21 @@ public class Hero {
             }
             case 3 -> {
                 jumpSpeed = 150;
+            }
+            case 4 -> {
+                jumpSpeed = 100;
+            }
+            case 6 -> {
+                jumpSpeed = 200;
+            }
+            case 7 -> {
+                jumpSpeed = 200;
+            }
+            case 8 -> {
+                jumpSpeed = 200;
+            }
+            case 9 -> {
+                jumpSpeed =  200;
             }
         }
         return jumpSpeed;

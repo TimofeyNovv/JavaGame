@@ -7,7 +7,7 @@ public class Main {
 
     static Floor floor = new Floor(0, 0, 0, 0);
 
-    static int numberfon = 1;
+    static int numberfon = 9;
 
     static ArrayList<Floor> floors = new ArrayList<>();
 
