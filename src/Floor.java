@@ -43,6 +43,8 @@ public class Floor extends Rectangle {
                 floors.add(new Floor(1730, 344, 190, 22));
             }
             case 3 -> {
+                bonuses.clear();
+
                 floors.add(new Floor(0, 1080, 1920, 20));
                 floors.add(new Floor(0, 342, 193, 24));
                 floors.add(new Floor(192, 651, 192, 24));
@@ -56,6 +58,8 @@ public class Floor extends Rectangle {
             }
             case 4 -> {
                 System.out.println("4");
+                bonuses.clear();
+
                 floors.add(new Floor(0, 1080, 1920, 20));
                 floors.add(new Floor(0, 600, 1920, 100));
             }
@@ -102,6 +106,15 @@ public class Floor extends Rectangle {
             }
 
             case 8 -> {
+                bonuses.clear();
+
+                bonuses.add(new Bonus(860,500,starsImage));
+                bonuses.add(new Bonus(550,744,starsImage));
+                bonuses.add(new Bonus(1350,558,starsImage));
+                bonuses.add(new Bonus(1710,846,starsImage));
+                bonuses.add(new Bonus(1160,910,starsImage));
+
+
                 floors.add(new Floor(0,646,189,24));
                 floors.add(new Floor(200,797,220,24));
                 floors.add(new Floor(820,600,180,24));
@@ -115,6 +128,7 @@ public class Floor extends Rectangle {
             }
 
             case 9 -> {
+                bonuses.clear();
                 bonuses.add(new Bonus(60,700,starsImage));
                 bonuses.add(new Bonus(770,438,starsImage));
                 bonuses.add(new Bonus(1650,204,starsImage));
@@ -137,6 +151,49 @@ public class Floor extends Rectangle {
                 floors.add(new Floor(0, 1080, 1920, 100));
             }
 
+            case 10 -> {
+                bonuses.clear();
+                bonuses.add(new Bonus(740,790, starsImage));
+                bonuses.add(new Bonus(880,290, starsImage));
+                bonuses.add(new Bonus(320,557, starsImage));
+                bonuses.add(new Bonus(1540,488, starsImage));
+
+                floors.add(new Floor(0, 900, 192, 24));
+                floors.add(new Floor(223, 657, 270, 27));
+                floors.add(new Floor(470, 442, 243, 26));
+                floors.add(new Floor(827, 390, 200, 24));
+                floors.add(new Floor(620, 890, 350,28));
+                floors.add(new Floor(1070, 766, 350,28));
+                floors.add(new Floor(1481, 588, 199,28));
+                floors.add(new Floor(1710,350, 199,28));
+
+
+                floors.add(new Floor(0, 1080, 1920, 10));
+
+
+            }
+            case 11 -> {
+                bonuses.clear();
+                bonuses.add(new Bonus(1600,638,starsImage));
+                bonuses.add(new Bonus(1160,290,starsImage));
+                bonuses.add(new Bonus(900,719,starsImage));
+                bonuses.add(new Bonus(1850,202,starsImage));
+
+                floors.add(new Floor(0, 764, 198, 23));
+                floors.add(new Floor(380, 819, 192, 24));
+                floors.add(new Floor(380, 480, 160, 24));
+                floors.add(new Floor(847, 819, 192, 24));
+                floors.add(new Floor(750, 420, 160, 24));
+                floors.add(new Floor(1113, 390, 192, 24));
+                floors.add(new Floor(1524, 302, 192, 24));
+                floors.add(new Floor(1850, 302, 192, 24));
+                floors.add(new Floor(1547, 738, 192, 24));
+                floors.add(new Floor(1300, 944, 192, 24));
+                floors.add(new Floor(1730, 1024, 192, 24));
+
+                floors.add(new Floor(0, 1080, 1920, 10));
+
+            }
         }
         return floors;
     }

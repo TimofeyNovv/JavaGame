@@ -119,6 +119,12 @@ public class Hero {
             case 9 -> {
                 jumpSpeed =  200;
             }
+            case 10 -> {
+                jumpSpeed = 200;
+            }
+            case 11 -> {
+                jumpSpeed = 200;
+            }
         }
         return jumpSpeed;
     }
