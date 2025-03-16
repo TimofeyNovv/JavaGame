@@ -7,7 +7,9 @@ public class Main {
 
     static Floor floor = new Floor(0, 0, 0, 0);
 
-    static int numberfon = 8;
+    static int numberfon = 1;
+
+    static boolean isConec = false;
 
     static ArrayList<Floor> floors = new ArrayList<>();
 
@@ -19,8 +21,6 @@ public class Main {
         System.out.println(numberfon);
         System.out.println(numberfon);
 
-        //bonuses.add(new Bonus(100, 100, new ImageIcon("images/icons/photo_face.png").getImage()));
-        // bonuses.add(new Bonus(200, 800, new ImageIcon("images/icons/photo_pen.png").getImage()));
 
         FlowPanel panel = new FlowPanel();
         screen.add(panel);
@@ -58,6 +58,25 @@ public class Main {
                             character.moveRight();
                         }
                     }
+                    case KeyEvent.VK_1 -> {
+                        Main.setNumberfon(5);
+                    }
+                    case KeyEvent.VK_2 -> {
+                        Main.setNumberfon(6);
+                        floors = floor.coordinationForFloor(numberfon);
+                    }
+                    case KeyEvent.VK_3 -> {
+                        Main.setNumberfon(12);
+                        floors = floor.coordinationForFloor(numberfon);
+                    }
+                    case KeyEvent.VK_4 -> {
+                        Main.setNumberfon(1);
+                        floors = floor.coordinationForFloor(numberfon);
+                    }
+                    case KeyEvent.VK_9 -> {
+                        Main.setIsConec(true);
+                        System.out.println("9");
+                    }
 
 
                 }
@@ -83,5 +102,17 @@ public class Main {
 
     public static int getNumberfon() {
         return numberfon;
+    }
+
+    public static void setNumberfon(int numberfon) {
+        Main.numberfon = numberfon;
+    }
+
+    public static void setIsConec(boolean isConec) {
+        Main.isConec = isConec;
+    }
+
+    public static boolean isIsConec() {
+        return isConec;
     }
 }

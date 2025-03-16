@@ -111,19 +111,19 @@ public class Hero {
                 jumpSpeed = 200;
             }
             case 7 -> {
-                jumpSpeed = 200;
+                jumpSpeed = 250;
             }
             case 8 -> {
-                jumpSpeed = 200;
+                jumpSpeed = 300;
             }
             case 9 -> {
-                jumpSpeed =  200;
+                jumpSpeed =  250;
             }
             case 10 -> {
-                jumpSpeed = 200;
+                jumpSpeed = 270;
             }
             case 11 -> {
-                jumpSpeed = 200;
+                jumpSpeed = 250;
             }
         }
         return jumpSpeed;
