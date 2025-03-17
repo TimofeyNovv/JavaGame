@@ -7,7 +7,7 @@ public class Main {
 
     static Floor floor = new Floor(0, 0, 0, 0);
 
-    static int numberfon = 1;
+    static int numberfon = 13;
 
     static boolean isConec = false;
 
@@ -69,13 +69,22 @@ public class Main {
                         Main.setNumberfon(12);
                         floors = floor.coordinationForFloor(numberfon);
                     }
-                    case KeyEvent.VK_4 -> {
+                    /*case KeyEvent.VK_4 -> {
                         Main.setNumberfon(1);
                         floors = floor.coordinationForFloor(numberfon);
-                    }
+                    }*/
                     case KeyEvent.VK_9 -> {
                         Main.setIsConec(true);
                         System.out.println("9");
+                    }
+                    case KeyEvent.VK_5 -> {
+                        Main.setNumberfon(13);
+                        floors = floor.coordinationForFloor(numberfon);
+                    }
+                    case KeyEvent.VK_6 ->{
+                        Main.setNumberfon(1);
+                        floors = floor.coordinationForFloor(numberfon);
+                        Main.character.setCoordY(300);
                     }
 
 

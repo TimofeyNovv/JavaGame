@@ -49,7 +49,7 @@ public class FlowPanel extends JPanel implements Runnable {
         Image conecImage = new ImageIcon("images/backgrounds/level.png").getImage();
         super.paint(g);
         if (imageH != null) {
-            if (Main.getNumberfon() == 5 || Main.getNumberfon() == 12){
+            if (Main.getNumberfon() == 5 || Main.getNumberfon() == 12 || Main.getNumberfon() == 13){
                 Main.setIsConec(false);
                 g.drawImage(backgroundImage, 0, 0, null);
             } else {
@@ -73,7 +73,7 @@ public class FlowPanel extends JPanel implements Runnable {
 
             //Отображение rectangle для платформ
             for (Floor block : Main.floors) {
-               // g.drawRect(block.x, block.y, block.width, block.height);
+                //g.drawRect(block.x, block.y, block.width, block.height);
             }
 
             for (BonusSyget bonusic : Main.bonusSygets) {

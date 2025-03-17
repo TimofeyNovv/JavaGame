@@ -14,8 +14,13 @@ public class Floor extends Rectangle {
         ArrayList<Floor> floors = new ArrayList<>();
         switch (numberFon) {
             case 1 -> {
-                bonuses.add(new Bonus(0, 600, starsImage));
-                bonuses.add(new Bonus(1800, 600, starsImage));
+                bonuses.clear();
+                //bonuses.add(new Bonus(0, 600, starsImage));
+                bonuses.add(new Bonus(790,493,starsImage));
+                bonuses.add(new Bonus(1820, 667, starsImage));
+                bonuses.add(new Bonus(1070, 825, starsImage));
+                bonuses.add(new Bonus(580, 860, starsImage));
+
                 floors.add(new Floor(0, 1080, 1920, 20));
                 floors.add(new Floor(0, 613, 190, 22));
                 floors.add(new Floor(196, 718, 224, 38));

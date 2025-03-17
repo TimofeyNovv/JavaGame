@@ -3,7 +3,7 @@ import java.awt.*;
 public class Hero {
     private short coordX = 20;
 
-    private int coordY = 0;
+    private int coordY = 250;
 
     private boolean isjumped = true;
 
@@ -28,15 +28,15 @@ public class Hero {
         coordX += speedX;
         coordY += speedY;
 
-        legs.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY + Const.CHARACTER_HEIGHT - 15,
+        legs.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY + Const.CHARACTER_HEIGHT - 15 + 95,
                 Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
 
-        head.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY,
+        head.setBounds(coordX + Const.CHARACTER_HAND_WIDTH, coordY + 95,
                 Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH * 2, 15);
 
-        leftHand.setBounds(coordX, coordY + legs.height, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
+        leftHand.setBounds(coordX, coordY + legs.height + 95, Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
-        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY + legs.height,
+        rightHand.setBounds(coordX + Const.CHARACTER_WIDTH - Const.CHARACTER_HAND_WIDTH, coordY + legs.height + 95,
                 Const.CHARACTER_HAND_WIDTH, Const.CHARACTER_HEIGHT - legs.height * 2);
 
         collision();
@@ -45,10 +45,10 @@ public class Hero {
     public void collision() {
         for (Floor block : Main.floors) {
             if (legs.intersects(block)) {
-                coordY = block.y - Const.CHARACTER_HEIGHT;
+                coordY = block.y - Const.CHARACTER_HEIGHT - 95;
                 isjumped = false;
             } else if (head.intersects(block)) {
-                coordY = block.y + block.height;
+                coordY = block.y + block.height - 95;
             } /*else if (leftHand.intersects(block)) {
                 coordX += 12;
             } else if (rightHand.intersects(block)) {
@@ -84,7 +84,10 @@ public class Hero {
         int jumpSpeed = 0;
         switch (numberFon){
             case 1 -> {
-                jumpSpeed = 100;
+                jumpSpeed = 240;
+                if (coordX > 500){
+                    jumpSpeed = 170;
+                }
             }
             case 2 -> {
                 if (coordX > 0 && coordX < 400) {
@@ -177,4 +180,6 @@ public class Hero {
     public void setCoordY(int coordY) {
         this.coordY = coordY;
     }
+
+
 }
